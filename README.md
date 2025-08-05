@@ -8,7 +8,7 @@
   <p align="center">
     <i>This project tackles credit card fraud detection using machine learning, focusing on the challenge of extreme class imbalance. The main goal is to model a real-world problem and learn how to navigate different development phases—from preprocessing and EDA to experimentation, tuning, and evaluation—until reaching the best possible model.</i>
     <br />
-    <a href="https://youtu.be/your-demo-link"><strong>Quick Demo</strong></a>
+    <!-- <a href="https://youtu.be/your-demo-link"><strong>Quick Demo</strong></a> -->
   </p>
 </div>
 
