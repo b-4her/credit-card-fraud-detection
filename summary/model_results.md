@@ -12,7 +12,7 @@
 | Logistic (Random Under)       | Original |     0.5473 |          0.5414 |
 | Logistic (KMeans Under)       | Original |     0.7524 |          0.7805 |
 | Logistic (Random + SMOTE)     | Original |     0.7717 |          0.8111 |
-| Logistic (PCA)                | Original |     0.0035 |          0.0031 |
+| Logistic (PCA)                | Original |     0.8034 |          0.8070 |
 | Logistic (best overall manual)| Original |     0.8065 |          0.8118 |
 | Neural Network (manual)       | Original |     0.9693 |          0.8606 |
 | Random Forest (manual)        | Original |     1      |          0.881  |
