@@ -55,7 +55,7 @@ def main():
         else:
             steps.append(('resampler', resampler))
 
-    if args.expansion > 0:
+    if args.expansion > 1:
         from sklearn.preprocessing import PolynomialFeatures
         from sklearn.compose import ColumnTransformer
 

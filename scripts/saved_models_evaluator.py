@@ -10,7 +10,7 @@ from sklearn.metrics import f1_score, precision_score, recall_score, average_pre
 
 DEFAULT_TEST_FILE = '../data/split/test.csv'
 DEFAULT_MODEL_DIR = '../models/'
-DEFAULT_MODEL_NAME = 'best_knn_no_search.pkl'
+DEFAULT_MODEL_NAME = 'best_nn_no_search.pkl'
 
 def main():
     parser = argparse.ArgumentParser(description="Load and evaluate a saved model.")
