@@ -1,3 +1,5 @@
+## Model Results
+
 | Model                          | Dataset  |   Train F1 |   Validation F1 |
 |:------------------------------|:---------|-----------:|----------------:|
 | Logistic (base)               | Sample   |     0.7143 |          0.7083 |

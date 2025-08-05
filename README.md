@@ -84,7 +84,7 @@ A variety of models were trained and compared using metrics suited for imbalance
 - Identified key features related to fraud using correlation and importance analysis.
 - Based on EDA insights, I opted to emphasize model-selection and stratified sampling instead of detailed feature engineering.
 
-See the full analysis in the 📄 [`EDA Notebook`](notebooks/eda.ipynb).
+See the full analysis in the 📄 [`EDA Notebook`](notebooks/EDA.ipynb).
 
 ### Modeling and Results
 
