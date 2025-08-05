@@ -9,8 +9,8 @@ from model_utils_data import preprocessing_pipeline, get_args, make_config, save
 from model_utils_eval import get_scaler, get_model, evaluate_model, find_best_threshold, search_and_train, get_resampler
 
 # Should be modidified manually before saving a model
-MODEL_FILE = 'model_1'
-CONFIG_FILE = 'config_1'
+MODEL_FILE = 'best_vc_rndm_search'
+CONFIG_FILE = 'best_vc_rndm_search'
 
 DEFAULT_SAMPLE_PATH = '../data/sample/'
 DEFAULT_PATH = '../data/split/'
@@ -48,7 +48,12 @@ def main():
 
     if args.resampler != "none":
         print("Adding resampler to the pipeline...")
-        steps.append(('resampler', get_resampler(args.resampler)))
+        resampler = get_resampler(args.resampler)
+        if args.resampler == 'both' or args.resampler == 'both-kmeans':
+            steps.append(resampler[0])
+            steps.append(resampler[1])
+        else:
+            steps.append(('resampler', resampler))
 
     if args.expansion > 0:
         from sklearn.preprocessing import PolynomialFeatures
@@ -73,7 +78,7 @@ def main():
     if args.pca:
         from sklearn.decomposition import PCA
         print("Adding PCA to the pipeline...")
-        pca = PCA(n_components=args.pca)
+        pca = PCA(n_components=20)
         steps.append(('pca', pca))
 
     # Add scaler (After PCA & Expansion - to ensure featuers are fully scaled)
@@ -87,7 +92,7 @@ def main():
 
     if args.random_search or args.model=='vc':
         model_pipeline = search_and_train(X_train, y_train, steps, args)
-        
+
     else:
         # Add model
         model = get_model(args)
@@ -99,6 +104,7 @@ def main():
             model_pipeline = normal_Pipeline(steps=steps, verbose=True)
         else:
             model_pipeline = imb_Pipeline(steps=steps, verbose=True)
+        
         model_pipeline.fit(X_train, y_train)
 
     end_time = time.time()

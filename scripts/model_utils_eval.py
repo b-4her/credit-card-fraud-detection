@@ -110,7 +110,11 @@ def search_and_train(X_train, y_train, steps, args):
             'model__C': loguniform(1e-4, 1e2),
             'model__penalty': ['l1', 'l2'],
             'model__solver': ['liblinear', 'saga'],
-            'model__max_iter': [3000, 4000, 5000]
+            'model__max_iter': [3000, 4000, 5000],
+            'model__class_weight': [None, 'balanced'] + [
+                {0: w0, 1: w1}
+                for w0, w1 in zip(np.linspace(0.1, 0.9, 5), np.linspace(0.9, 0.1, 5))
+            ]
         }
 
         search = RandomizedSearchCV(
@@ -253,9 +257,9 @@ def find_best_threshold(model, X_train, y_train, thresholds_num=100):
 
 def get_scaler(args):
     if args.scale == 'minmax':
-        return MinMaxScaler(random_state = RANDOM_STATE)
+        return MinMaxScaler()
     else:
-        return StandardScaler(random_state = RANDOM_STATE)
+        return StandardScaler()
     
     
 def get_resampler(strategy: str):
@@ -284,7 +288,7 @@ def get_resampler(strategy: str):
         return RandomUnderSampler(random_state=RANDOM_STATE)
 
     elif strategy == "under-kmeans":
-        return ClusterCentroids(random_state=RANDOM_STATE)
+        return ClusterCentroids(sampling_strategy=0.1, random_state=RANDOM_STATE)
 
     elif strategy == "both":
         # Placeholder target sizes for pipeline construction
@@ -295,24 +299,24 @@ def get_resampler(strategy: str):
         )
         undersample = RandomUnderSampler(random_state=RANDOM_STATE)
 
-        return imb_Pipeline([
+        return [
             ('over', oversample),
             ('under', undersample)
-        ])
+        ]
 
     elif strategy == "both-kmeans":
         oversample = KMeansSMOTE(
-            sampling_strategy='auto',
-            random_state=RANDOM_STATE
+            cluster_balance_threshold=0.001,
+            kmeans_estimator=20,
+            n_jobs=-1
         )
         undersample = ClusterCentroids(
-            sampling_strategy='auto',
             random_state=RANDOM_STATE
         )
-        return imb_Pipeline([
+        return [
             ('over', oversample),
             ('under', undersample)
-        ])
+        ]
 
     else:
         raise ValueError(f"Unknown resampling strategy: {strategy}")
@@ -320,7 +324,7 @@ def get_resampler(strategy: str):
 
 def get_model(args):
     if args.model == 'logistic':
-        if False: # manually turn to true for cost sensitive model.
+        if True: # manually turn to true for cost sensitive model.
             logistic_params = {
                 'random_state': RANDOM_STATE,
                 'verbose': 1,
@@ -345,14 +349,14 @@ def get_model(args):
         rf_params = {  # Modify manually
             'random_state': RANDOM_STATE,
             'verbose': 1,
-            # 'n_estimators': 100,
-            # 'max_depth': None,
+            'n_estimators': 200,
+            'max_depth': None,
         }
         return RandomForestClassifier(**rf_params)
 
     elif args.model == 'knn':
         knn_params = {  # Modify manually
-            'n_neighbors': 5,
+            'n_neighbors': 4,
             'weights': 'uniform',
             'metric': 'minkowski',
             # No random_state or verbose for KNN
@@ -363,7 +367,7 @@ def get_model(args):
         mlp_params = {  # Modify manually
             'random_state': RANDOM_STATE,
             'verbose': True,
-            # 'hidden_layer_sizes': (100,),
-            # 'max_iter': 300,
+            'hidden_layer_sizes': (100,),
+            'max_iter': 300,
         }
         return MLPClassifier(**mlp_params)
