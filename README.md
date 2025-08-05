@@ -189,7 +189,8 @@ cd scripts
 ```
 
 ```bash
-python3 model_train.py --model=rf --scale=standardization --resampler=over-smote --expansion=2 --pca --thresholds-num=100 --preprocess --save-model
+python3 model_train.py --model=rf --scale=standardization --resampler=over-smote \
+--expansion=2 --pca --thresholds-num=100 --preprocess --save-model
 ```
 
 This runs a Random Forest with standard scaling, SMOTE oversampling, polynomial features of degree 2, PCA 18 components, threshold search with 100 candidates, preprocessing enabled, and saves the model.
