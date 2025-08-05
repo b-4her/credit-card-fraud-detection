@@ -200,7 +200,7 @@ This runs a Random Forest with standard scaling, SMOTE oversampling, polynomial 
 This script is designed to **load a previously saved model** and evaluate its performance on the test dataset. You can control which model to load in **two ways**:
 
 1. **Modify the constant variables in the script**:
-   - `DEFAULT_MODEL_NAME`: Name of the model file (e.g., `'best_nn_no_search.pkl'`)
+   - `DEFAULT_MODEL_NAME`: Name of the model file (e.g., `'best_nn_no_search`)
    - `DEFAULT_MODEL_DIR`: Directory where models are stored
    - `DEFAULT_TEST_FILE`: Path to the test CSV file
 
