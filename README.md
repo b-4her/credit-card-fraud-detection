@@ -208,7 +208,7 @@ This script is designed to **load a previously saved model** and evaluate its pe
    - This overrides the default model name at runtime.
    - Example:
      ```bash
-     python evaluate_model.py --model my_trained_model.pkl
+     pythom3 saved_models_evaluator.py --model my_trained_model.pkl
      ```
 
 Once the model is loaded, it uses the pipeline and threshold saved in the pickle file to:
