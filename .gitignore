@@ -1,3 +1,17 @@
+# Ignore data folder or files
+data/
+
+# files
+TODO.md
+train_cli.md
+for_report.md
+
+# Large models
+best_vc_rndm_search.pkl
+
+# Mac
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

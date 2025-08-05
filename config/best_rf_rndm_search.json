@@ -1,0 +1,20 @@
+{
+    "model_name": "RandomForest",
+    "pkl_name": "best_rf_rndm_search.pkl",
+    "random_state": 42,
+    "training_time_sec": 2902.5875,
+    "evaluated_on": "validation",
+    "search_strategy": "RandomGridSearch",
+    "resampling_strategy": "No Resampling",
+    "scaling_method": "standardization",
+    "is_sample": false,
+    "is_PCA": false,
+    "is_default_threshold": false,
+    "threshold": 0.1919,
+    "poly_expansion_degree": 0,
+    "f1_train": 0.9562,
+    "f1_test": 0.8475,
+    "precision_test": 0.8523,
+    "recall_test": 0.8427,
+    "average_precision_test": 0.8601
+}

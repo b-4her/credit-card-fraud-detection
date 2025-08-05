@@ -1,0 +1,20 @@
+{
+    "model_name": "LogisticRegression",
+    "pkl_name": "best_logistic_no_search.pkl",
+    "random_state": 42,
+    "training_time_sec": 1.3392,
+    "evaluated_on": "validation",
+    "search_strategy": "None",
+    "resampling_strategy": "No Resampling",
+    "scaling_method": "none",
+    "is_sample": false,
+    "is_PCA": false,
+    "is_default_threshold": false,
+    "threshold": 0.5455,
+    "poly_expansion_degree": 1,
+    "f1_train": 0.8065,
+    "f1_test": 0.8118,
+    "precision_test": 0.8519,
+    "recall_test": 0.7753,
+    "average_precision_test": 0.7422
+}

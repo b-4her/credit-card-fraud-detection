@@ -1,0 +1,20 @@
+{
+    "model_name": "NeuralNetwork",
+    "pkl_name": "best_nn_rndm_search.pkl",
+    "random_state": 42,
+    "training_time_sec": 306.6476,
+    "evaluated_on": "validation",
+    "search_strategy": "RandomGridSearch",
+    "resampling_strategy": "No Resampling",
+    "scaling_method": "standardization",
+    "is_sample": false,
+    "is_PCA": false,
+    "is_default_threshold": false,
+    "threshold": 0.3232,
+    "poly_expansion_degree": 0,
+    "f1_train": 0.9322,
+    "f1_test": 0.8383,
+    "precision_test": 0.8974,
+    "recall_test": 0.7865,
+    "average_precision_test": 0.8337
+}

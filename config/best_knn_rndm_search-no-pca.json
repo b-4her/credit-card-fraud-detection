@@ -1,0 +1,20 @@
+{
+    "model_name": "KNearestNeighbors",
+    "pkl_name": "best_knn_rndm_search-no-pca.pkl",
+    "random_state": 42,
+    "training_time_sec": 746.1252,
+    "evaluated_on": "validation",
+    "search_strategy": "RandomGridSearch",
+    "resampling_strategy": "No Resampling",
+    "scaling_method": "standardization",
+    "is_sample": false,
+    "is_PCA": false,
+    "is_default_threshold": false,
+    "threshold": 0.0101,
+    "poly_expansion_degree": 0,
+    "f1_train": 1.0,
+    "f1_test": 0.7629,
+    "precision_test": 0.7048,
+    "recall_test": 0.8315,
+    "average_precision_test": 0.8078
+}
