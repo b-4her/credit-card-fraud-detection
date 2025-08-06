@@ -115,7 +115,7 @@ def main():
 
 
     if args.thresholds_num > 0:
-        threshold = find_best_threshold(model_pipeline, X_train, y_train, args.thresholds_num)
+        threshold = find_best_threshold(model_pipeline, X_val, y_val, args.thresholds_num) # Tuning is always done on validation set
         print(f"Best threshold is {threshold:.4f}")
     else:
         threshold = 0.5
